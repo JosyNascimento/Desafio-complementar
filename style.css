@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+
+  h1 {
+    text-align: center;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(25, 46, 181, 0.217);
+  }
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .table th, .table td {
+    border: 1px solid #84d442ed;
+    padding: 10px;
+    text-align: left;
+  }

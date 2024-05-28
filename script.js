@@ -1,39 +1,30 @@
+function financiamentoImovel() {
+    let valorImovel = 560000;
+      let numParcelas = 120;
+      let juros = 0.015; // 1,5% ao mês
+      let saldoDevedor = valorImovel;
+      let parcelas = [];
+      let meses = [];
 
+      for (let i = 1; i <= numParcelas; i++) {
+        let parcela = (saldoDevedor * juros) + (saldoDevedor / numParcelas);
+        parcelas.push(parcela.toFixed(2));
+        meses.push(i);
+        saldoDevedor -= parcela;
+      }
 
-function simularFinanciamento(valorImovel, entrada, taxaJuros, prazo) {
-    let totalParcela = 120;
-    let valorParcela = 0;
-    let valorRestante = valorImovel -  entrada;
+      let tableBody = document.getElementById("table-body");
+      for (let i = 0; i < parcelas.length; i++) {
+        let row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${meses[i]}</td>
+          <td>R$ ${parcelas[i]}</td>
+          <td>R$ ${((saldoDevedor * juros).toFixed(2))}</td>
+          <td>R$ ${((saldoDevedor - parcelas[i]).toFixed(2))}</td>
+          <td>R$ ${saldoDevedor.toFixed(2)}</td>`;
+        tableBody.appendChild(row);
+      }
 
-
-    //parcela inicial
-    valorParcela = valorRestante / (prazo * 120);
-
-    //parcelas
-    let i = 0;
-    while (valorRestante > 0) {
-        for ( let j = 1; j <= 120; j++){
-
-            //calcula o valor das parcelas
-            valorParcela = valorRestante / (prazo * 120);
-
-            //valor das parcelas
-                console.log("parcela $ {i + 1} - valor: R$${valorParcela.toFixed(2)}")
-            
-                //atualizar o valo restante
-            valorRestante -= valorParcela;
-
-            //total de parcelas
-            totalParcelaslas++;
-
-            i++;
-
-        }
-
-    }
-    //total de parcelas
-    console.log("total de parcelas: ${totalParcelas}");
-
-}
-//uso
-simularFinanciamento(5450000, 10000, 9.5, 30);
+      }
+      
+  financiamentoImovel();
